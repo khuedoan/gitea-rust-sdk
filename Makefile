@@ -8,7 +8,7 @@ generate:
 		--input-spec https://gitea.com/swagger.v1.json \
 		--invoker-package Gitea \
 		--generator-name rust \
-		--additional-properties packageName=gitea-sdk \
+		--additional-properties packageName=gitea \
 		--output /local/
 
 format:
