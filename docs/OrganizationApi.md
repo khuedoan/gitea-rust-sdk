@@ -1,4 +1,4 @@
-# \OrganizationApi
+# Gitea\OrganizationApi
 
 All URIs are relative to */api/v1*
 

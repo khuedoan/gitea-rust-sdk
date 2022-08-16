@@ -1,4 +1,4 @@
-# \ActivitypubApi
+# Gitea\ActivitypubApi
 
 All URIs are relative to */api/v1*
 

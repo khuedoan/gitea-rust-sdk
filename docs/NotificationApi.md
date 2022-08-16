@@ -1,4 +1,4 @@
-# \NotificationApi
+# Gitea\NotificationApi
 
 All URIs are relative to */api/v1*
 

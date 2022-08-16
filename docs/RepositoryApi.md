@@ -1,4 +1,4 @@
-# \RepositoryApi
+# Gitea\RepositoryApi
 
 All URIs are relative to */api/v1*
 

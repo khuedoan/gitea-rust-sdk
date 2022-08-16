@@ -1,4 +1,4 @@
-# \SettingsApi
+# Gitea\SettingsApi
 
 All URIs are relative to */api/v1*
 

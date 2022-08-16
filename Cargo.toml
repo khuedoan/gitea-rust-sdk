@@ -1,5 +1,5 @@
 [package]
-name = "openapi"
+name = "gitea-sdk"
 version = "1.18.0+de-283-gefaa9958b"
 authors = ["OpenAPI Generator team and contributors"]
 edition = "2018"

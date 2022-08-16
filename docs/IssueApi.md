@@ -1,4 +1,4 @@
-# \IssueApi
+# Gitea\IssueApi
 
 All URIs are relative to */api/v1*
 
