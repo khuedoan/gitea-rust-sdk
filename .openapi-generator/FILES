@@ -1,5 +1,4 @@
 .gitignore
-.travis.yml
 Cargo.toml
 README.md
 docs/AccessToken.md
@@ -168,7 +167,6 @@ docs/WikiCommit.md
 docs/WikiCommitList.md
 docs/WikiPage.md
 docs/WikiPageMetaData.md
-git_push.sh
 src/apis/activitypub_api.rs
 src/apis/admin_api.rs
 src/apis/configuration.rs
