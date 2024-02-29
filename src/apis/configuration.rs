@@ -31,8 +31,10 @@ pub struct ApiKey {
 }
 
 impl Configuration {
-    pub fn new() -> Configuration {
-        Configuration::default()
+    pub fn new(host: String) -> Configuration {
+        let mut cfg = Configuration::default();
+        cfg.base_path = format!("https://{}/{}", host, cfg.base_path);
+        cfg
     }
 }
 
