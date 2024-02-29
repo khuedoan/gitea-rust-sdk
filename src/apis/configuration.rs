@@ -31,9 +31,12 @@ pub struct ApiKey {
 }
 
 impl Configuration {
-    pub fn new(host: String) -> Configuration {
+    pub fn new(host: String, api_key: Option<String>) -> Configuration {
         let mut cfg = Configuration::default();
         cfg.base_path = format!("https://{}/{}", host, cfg.base_path);
+        if api_key.is_some() {
+            cfg.api_key = Some(ApiKey { prefix: None, key: api_key.unwrap() });
+        }
         cfg
     }
 }
