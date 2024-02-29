@@ -9,6 +9,7 @@
  */
 
 use reqwest;
+use serde::de::Unexpected::Str;
 
 #[derive(Debug, Clone)]
 pub struct Configuration {
@@ -19,7 +20,7 @@ pub struct Configuration {
     pub oauth_access_token: Option<String>,
     pub bearer_access_token: Option<String>,
     pub api_key: Option<ApiKey>,
-    // TODO: take an oauth2 token source, similar to the go one
+    pub oauth2_token: Option<String>,
 }
 
 pub type BasicAuth = (String, Option<String>);
@@ -31,7 +32,7 @@ pub struct ApiKey {
 }
 
 impl Configuration {
-    pub fn new(host: String, api_key: Option<String>) -> Configuration {
+    pub fn new(host: String, api_key: Option<String>,oauth2_token:Option<String>) -> Configuration {
         let mut cfg = Configuration::default();
         cfg.base_path = format!("https://{}/{}", host, cfg.base_path);
         if api_key.is_some() {
@@ -51,6 +52,7 @@ impl Default for Configuration {
             oauth_access_token: None,
             bearer_access_token: None,
             api_key: None,
+            oauth2_token:None,
         }
     }
 }

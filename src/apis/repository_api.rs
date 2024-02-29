@@ -1171,6 +1171,11 @@ pub async fn accept_repo_transfer(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -1260,6 +1265,11 @@ pub async fn create_current_user_repo(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -1361,6 +1371,11 @@ pub async fn create_fork(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -1458,6 +1473,11 @@ pub async fn generate_repo(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -1560,6 +1580,11 @@ pub async fn get_annotated_tag(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -1657,6 +1682,11 @@ pub async fn get_blob(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -1772,6 +1802,11 @@ pub async fn get_tree(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -1878,6 +1913,11 @@ pub async fn list_forks(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -1973,6 +2013,11 @@ pub async fn reject_repo_transfer(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -2075,6 +2120,11 @@ pub async fn repo_add_collaborator(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -2172,6 +2222,11 @@ pub async fn repo_add_push_mirror(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -2274,6 +2329,11 @@ pub async fn repo_add_team(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -2373,6 +2433,11 @@ pub async fn repo_add_topic(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -2469,6 +2534,11 @@ pub async fn repo_apply_diff_patch(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -2571,6 +2641,11 @@ pub async fn repo_cancel_scheduled_auto_merge(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -2668,6 +2743,11 @@ pub async fn repo_check_collaborator(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -2769,6 +2849,11 @@ pub async fn repo_check_team(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -2865,6 +2950,11 @@ pub async fn repo_create_branch(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -2964,6 +3054,11 @@ pub async fn repo_create_branch_protection(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -3067,6 +3162,11 @@ pub async fn repo_create_file(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -3164,6 +3264,11 @@ pub async fn repo_create_hook(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -3265,6 +3370,11 @@ pub async fn repo_create_key(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -3362,6 +3472,11 @@ pub async fn repo_create_pull_request(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -3465,6 +3580,11 @@ pub async fn repo_create_pull_review(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -3566,6 +3686,11 @@ pub async fn repo_create_pull_review_requests(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -3663,6 +3788,11 @@ pub async fn repo_create_release(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -3771,6 +3901,11 @@ pub async fn repo_create_release_attachment(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -3874,6 +4009,11 @@ pub async fn repo_create_status(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -3971,6 +4111,11 @@ pub async fn repo_create_tag(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -4072,6 +4217,11 @@ pub async fn repo_create_wiki_page(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -4168,6 +4318,11 @@ pub async fn repo_delete(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -4269,6 +4424,11 @@ pub async fn repo_delete_branch(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -4368,6 +4528,11 @@ pub async fn repo_delete_branch_protection(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -4465,6 +4630,11 @@ pub async fn repo_delete_collaborator(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -4567,6 +4737,11 @@ pub async fn repo_delete_file(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -4665,6 +4840,11 @@ pub async fn repo_delete_git_hook(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -4766,6 +4946,11 @@ pub async fn repo_delete_hook(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -4863,6 +5048,11 @@ pub async fn repo_delete_key(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -4966,6 +5156,11 @@ pub async fn repo_delete_pull_review(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -5064,6 +5259,11 @@ pub async fn repo_delete_pull_review_requests(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -5166,6 +5366,11 @@ pub async fn repo_delete_push_mirror(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -5263,6 +5468,11 @@ pub async fn repo_delete_release(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -5366,6 +5576,11 @@ pub async fn repo_delete_release_attachment(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -5463,6 +5678,11 @@ pub async fn repo_delete_release_by_tag(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -5564,6 +5784,11 @@ pub async fn repo_delete_tag(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -5661,6 +5886,11 @@ pub async fn repo_delete_team(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -5762,6 +5992,11 @@ pub async fn repo_delete_topic(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -5859,6 +6094,11 @@ pub async fn repo_delete_wiki_page(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -5963,6 +6203,11 @@ pub async fn repo_dismiss_pull_review(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -6063,6 +6308,11 @@ pub async fn repo_download_commit_diff_or_patch(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -6171,6 +6421,11 @@ pub async fn repo_download_pull_diff_or_patch(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -6267,6 +6522,11 @@ pub async fn repo_edit(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -6367,6 +6627,11 @@ pub async fn repo_edit_branch_protection(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -6470,6 +6735,11 @@ pub async fn repo_edit_git_hook(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -6569,6 +6839,11 @@ pub async fn repo_edit_hook(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -6672,6 +6947,11 @@ pub async fn repo_edit_pull_request(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -6771,6 +7051,11 @@ pub async fn repo_edit_release(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -6876,6 +7161,11 @@ pub async fn repo_edit_release_attachment(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -6977,6 +7267,11 @@ pub async fn repo_edit_wiki_page(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -7073,6 +7368,11 @@ pub async fn repo_get(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -7190,6 +7490,11 @@ pub async fn repo_get_all_commits(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -7289,6 +7594,11 @@ pub async fn repo_get_archive(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -7384,6 +7694,11 @@ pub async fn repo_get_assignees(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -7485,6 +7800,11 @@ pub async fn repo_get_branch(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -7584,6 +7904,11 @@ pub async fn repo_get_branch_protection(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -7677,6 +8002,11 @@ pub async fn repo_get_by_id(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -7782,6 +8112,11 @@ pub async fn repo_get_combined_status_by_ref(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -7885,6 +8220,11 @@ pub async fn repo_get_contents(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -7984,6 +8324,11 @@ pub async fn repo_get_contents_list(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -8089,6 +8434,11 @@ pub async fn repo_get_editor_config(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -8186,6 +8536,11 @@ pub async fn repo_get_git_hook(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -8287,6 +8642,11 @@ pub async fn repo_get_hook(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -8382,6 +8742,11 @@ pub async fn repo_get_issue_templates(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -8483,6 +8848,11 @@ pub async fn repo_get_key(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -8578,6 +8948,11 @@ pub async fn repo_get_languages(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -8679,6 +9054,11 @@ pub async fn repo_get_note(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -8776,6 +9156,11 @@ pub async fn repo_get_pull_request(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -8887,6 +9272,11 @@ pub async fn repo_get_pull_request_commits(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -8986,6 +9376,11 @@ pub async fn repo_get_pull_review(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -9089,6 +9484,11 @@ pub async fn repo_get_pull_review_comments(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -9186,6 +9586,11 @@ pub async fn repo_get_push_mirror_by_remote_name(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -9291,6 +9696,11 @@ pub async fn repo_get_raw_file(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -9394,6 +9804,11 @@ pub async fn repo_get_raw_file_or_lfs(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -9491,6 +9906,11 @@ pub async fn repo_get_release(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -9594,6 +10014,11 @@ pub async fn repo_get_release_attachment(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -9691,6 +10116,11 @@ pub async fn repo_get_release_by_tag(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -9792,6 +10222,11 @@ pub async fn repo_get_repo_permissions(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -9887,6 +10322,11 @@ pub async fn repo_get_reviewers(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -9988,6 +10428,11 @@ pub async fn repo_get_single_commit(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -10087,6 +10532,11 @@ pub async fn repo_get_tag(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -10184,6 +10634,11 @@ pub async fn repo_get_wiki_page(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -10288,6 +10743,11 @@ pub async fn repo_get_wiki_page_revisions(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -10397,6 +10857,11 @@ pub async fn repo_get_wiki_pages(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -10494,6 +10959,11 @@ pub async fn repo_list_all_git_refs(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -10589,6 +11059,11 @@ pub async fn repo_list_branch_protection(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -10698,6 +11173,11 @@ pub async fn repo_list_branches(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -10805,6 +11285,11 @@ pub async fn repo_list_collaborators(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -10902,6 +11387,11 @@ pub async fn repo_list_git_hooks(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -10993,6 +11483,11 @@ pub async fn repo_list_git_refs(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -11100,6 +11595,11 @@ pub async fn repo_list_hooks(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -11217,6 +11717,11 @@ pub async fn repo_list_keys(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -11361,6 +11866,11 @@ pub async fn repo_list_pull_requests(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -11470,6 +11980,11 @@ pub async fn repo_list_pull_reviews(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -11577,6 +12092,11 @@ pub async fn repo_list_push_mirrors(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -11674,6 +12194,11 @@ pub async fn repo_list_release_attachments(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -11798,6 +12323,11 @@ pub async fn repo_list_releases(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -11903,6 +12433,11 @@ pub async fn repo_list_stargazers(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -12024,6 +12559,11 @@ pub async fn repo_list_statuses(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -12137,6 +12677,11 @@ pub async fn repo_list_statuses_by_ref(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -12242,6 +12787,11 @@ pub async fn repo_list_subscribers(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -12351,6 +12901,11 @@ pub async fn repo_list_tags(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -12446,6 +13001,11 @@ pub async fn repo_list_teams(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -12555,6 +13115,11 @@ pub async fn repo_list_topics(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -12655,6 +13220,11 @@ pub async fn repo_merge_pull_request(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -12745,6 +13315,11 @@ pub async fn repo_migrate(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -12843,6 +13418,11 @@ pub async fn repo_mirror_sync(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -12944,6 +13524,11 @@ pub async fn repo_pull_request_is_merged(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -13039,6 +13624,11 @@ pub async fn repo_push_mirror_sync(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -13214,6 +13804,11 @@ pub async fn repo_search(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -13309,6 +13904,11 @@ pub async fn repo_signing_key(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -13413,6 +14013,11 @@ pub async fn repo_submit_pull_review(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -13515,6 +14120,11 @@ pub async fn repo_test_hook(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -13639,6 +14249,11 @@ pub async fn repo_tracked_times(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -13735,6 +14350,11 @@ pub async fn repo_transfer(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -13839,6 +14459,11 @@ pub async fn repo_un_dismiss_pull_review(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -13937,6 +14562,11 @@ pub async fn repo_update_file(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -14044,6 +14674,11 @@ pub async fn repo_update_pull_request(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -14140,6 +14775,11 @@ pub async fn repo_update_topics(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -14245,6 +14885,11 @@ pub async fn topic_search(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -14340,6 +14985,11 @@ pub async fn user_current_check_subscription(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -14439,6 +15089,11 @@ pub async fn user_current_delete_subscription(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -14534,6 +15189,11 @@ pub async fn user_current_put_subscription(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
@@ -14633,6 +15293,11 @@ pub async fn user_tracked_times(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {

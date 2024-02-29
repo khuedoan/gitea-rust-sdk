@@ -85,6 +85,11 @@ pub async fn activitypub_person(
             local_var_auth_conf.1.to_owned(),
         );
     };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
+        );
+    };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
         let local_var_value = match local_var_apikey.prefix {
@@ -178,6 +183,11 @@ pub async fn activitypub_person_inbox(
         local_var_req_builder = local_var_req_builder.basic_auth(
             local_var_auth_conf.0.to_owned(),
             local_var_auth_conf.1.to_owned(),
+        );
+    };
+    if let Some(ref local_var_auth_conf) = local_var_configuration.oauth2_token {
+        local_var_req_builder = local_var_req_builder.bearer_auth(
+            local_var_auth_conf
         );
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
