@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**commit** | Option<[**crate::models::PayloadCommit**](PayloadCommit.md)> |  | [optional]
+**commit** | Option<[**models::PayloadCommit**](PayloadCommit.md)> |  | [optional]
 **effective_branch_protection_name** | Option<**String**> |  | [optional]
 **enable_status_check** | Option<**bool**> |  | [optional]
 **name** | Option<**String**> |  | [optional]

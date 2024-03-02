@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## notify_get_list
 
-> Vec<crate::models::NotificationThread> notify_get_list(all, status_types, subject_type, since, before, page, limit)
+> Vec<models::NotificationThread> notify_get_list(all, status_types, subject_type, since, before, page, limit)
 List users's notification threads
 
 ### Parameters
@@ -34,11 +34,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::NotificationThread>**](NotificationThread.md)
+[**Vec<models::NotificationThread>**](NotificationThread.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Required | Notes
 
 ## notify_get_repo_list
 
-> Vec<crate::models::NotificationThread> notify_get_repo_list(owner, repo, all, status_types, subject_type, since, before, page, limit)
+> Vec<models::NotificationThread> notify_get_repo_list(owner, repo, all, status_types, subject_type, since, before, page, limit)
 List users's notification threads on a specific repo
 
 ### Parameters
@@ -70,11 +70,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::NotificationThread>**](NotificationThread.md)
+[**Vec<models::NotificationThread>**](NotificationThread.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Required | Notes
 
 ## notify_get_thread
 
-> crate::models::NotificationThread notify_get_thread(id)
+> models::NotificationThread notify_get_thread(id)
 Get notification thread by ID
 
 ### Parameters
@@ -98,11 +98,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::NotificationThread**](NotificationThread.md)
+[**models::NotificationThread**](NotificationThread.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Required | Notes
 
 ## notify_new_available
 
-> crate::models::NotificationCount notify_new_available()
+> models::NotificationCount notify_new_available()
 Check if unread notifications exist
 
 ### Parameters
@@ -123,11 +123,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::NotificationCount**](NotificationCount.md)
+[**models::NotificationCount**](NotificationCount.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -139,7 +139,7 @@ This endpoint does not need any parameter.
 
 ## notify_read_list
 
-> Vec<crate::models::NotificationThread> notify_read_list(last_read_at, all, status_types, to_status)
+> Vec<models::NotificationThread> notify_read_list(last_read_at, all, status_types, to_status)
 Mark notification threads as read, pinned or unread
 
 ### Parameters
@@ -154,11 +154,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::NotificationThread>**](NotificationThread.md)
+[**Vec<models::NotificationThread>**](NotificationThread.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -170,7 +170,7 @@ Name | Type | Description  | Required | Notes
 
 ## notify_read_repo_list
 
-> Vec<crate::models::NotificationThread> notify_read_repo_list(owner, repo, all, status_types, to_status, last_read_at)
+> Vec<models::NotificationThread> notify_read_repo_list(owner, repo, all, status_types, to_status, last_read_at)
 Mark notification threads as read, pinned or unread on a specific repo
 
 ### Parameters
@@ -187,11 +187,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::NotificationThread>**](NotificationThread.md)
+[**Vec<models::NotificationThread>**](NotificationThread.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Required | Notes
 
 ## notify_read_thread
 
-> crate::models::NotificationThread notify_read_thread(id, to_status)
+> models::NotificationThread notify_read_thread(id, to_status)
 Mark notification thread as read by ID
 
 ### Parameters
@@ -216,11 +216,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::NotificationThread**](NotificationThread.md)
+[**models::NotificationThread**](NotificationThread.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 

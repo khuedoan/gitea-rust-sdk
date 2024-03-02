@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**confidential_client** | Option<**bool**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **redirect_uris** | Option<**Vec<String>**> |  | [optional]
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**assets** | Option<[**Vec<crate::models::Attachment>**](Attachment.md)> |  | [optional]
-**author** | Option<[**crate::models::User**](User.md)> |  | [optional]
+**assets** | Option<[**Vec<models::Attachment>**](Attachment.md)> |  | [optional]
+**author** | Option<[**models::User**](User.md)> |  | [optional]
 **body** | Option<**String**> |  | [optional]
 **created_at** | Option<**String**> |  | [optional]
 **draft** | Option<**bool**> |  | [optional]
@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **tag_name** | Option<**String**> |  | [optional]
 **tarball_url** | Option<**String**> |  | [optional]
 **target_commitish** | Option<**String**> |  | [optional]
+**upload_url** | Option<**String**> |  | [optional]
 **url** | Option<**String**> |  | [optional]
 **zipball_url** | Option<**String**> |  | [optional]
 

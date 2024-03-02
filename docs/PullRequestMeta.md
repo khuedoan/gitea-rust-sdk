@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**draft** | Option<**bool**> |  | [optional]
 **merged** | Option<**bool**> |  | [optional]
 **merged_at** | Option<**String**> |  | [optional]
 

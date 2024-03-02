@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## get_general_api_settings
 
-> crate::models::GeneralApiSettings get_general_api_settings()
+> models::GeneralApiSettings get_general_api_settings()
 Get instance's global settings for api
 
 ### Parameters
@@ -22,11 +22,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::GeneralApiSettings**](GeneralAPISettings.md)
+[**models::GeneralApiSettings**](GeneralAPISettings.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -38,7 +38,7 @@ This endpoint does not need any parameter.
 
 ## get_general_attachment_settings
 
-> crate::models::GeneralAttachmentSettings get_general_attachment_settings()
+> models::GeneralAttachmentSettings get_general_attachment_settings()
 Get instance's global settings for Attachment
 
 ### Parameters
@@ -47,11 +47,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::GeneralAttachmentSettings**](GeneralAttachmentSettings.md)
+[**models::GeneralAttachmentSettings**](GeneralAttachmentSettings.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -63,7 +63,7 @@ This endpoint does not need any parameter.
 
 ## get_general_repository_settings
 
-> crate::models::GeneralRepoSettings get_general_repository_settings()
+> models::GeneralRepoSettings get_general_repository_settings()
 Get instance's global settings for repositories
 
 ### Parameters
@@ -72,11 +72,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::GeneralRepoSettings**](GeneralRepoSettings.md)
+[**models::GeneralRepoSettings**](GeneralRepoSettings.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -88,7 +88,7 @@ This endpoint does not need any parameter.
 
 ## get_general_ui_settings
 
-> crate::models::GeneralUiSettings get_general_ui_settings()
+> models::GeneralUiSettings get_general_ui_settings()
 Get instance's global settings for ui
 
 ### Parameters
@@ -97,11 +97,11 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**crate::models::GeneralUiSettings**](GeneralUISettings.md)
+[**models::GeneralUiSettings**](GeneralUISettings.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 

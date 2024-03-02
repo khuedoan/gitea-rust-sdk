@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **key** | Option<**String**> |  | [optional]
 **key_id** | Option<**i64**> |  | [optional]
 **read_only** | Option<**bool**> |  | [optional]
-**repository** | Option<[**crate::models::Repository**](Repository.md)> |  | [optional]
+**repository** | Option<[**models::Repository**](Repository.md)> |  | [optional]
 **title** | Option<**String**> |  | [optional]
 **url** | Option<**String**> |  | [optional]
 

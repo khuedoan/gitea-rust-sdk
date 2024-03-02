@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**accept_repo_transfer**](RepositoryApi.md#accept_repo_transfer) | **POST** /repos/{owner}/{repo}/transfer/accept | Accept a repo transfer
 [**create_current_user_repo**](RepositoryApi.md#create_current_user_repo) | **POST** /user/repos | Create a repository
 [**create_fork**](RepositoryApi.md#create_fork) | **POST** /repos/{owner}/{repo}/forks | Fork a repository
+[**delete_repo_secret**](RepositoryApi.md#delete_repo_secret) | **DELETE** /repos/{owner}/{repo}/actions/secrets/{secretname} | Delete a secret in a repository
 [**generate_repo**](RepositoryApi.md#generate_repo) | **POST** /repos/{template_owner}/{template_repo}/generate | Create a repository using a template
 [**get_annotated_tag**](RepositoryApi.md#get_annotated_tag) | **GET** /repos/{owner}/{repo}/git/tags/{sha} | Gets the tag object of an annotated tag (not lightweight tags)
 [**get_blob**](RepositoryApi.md#get_blob) | **GET** /repos/{owner}/{repo}/git/blobs/{sha} | Gets the blob of a repository.
@@ -19,6 +20,7 @@ Method | HTTP request | Description
 [**repo_add_topic**](RepositoryApi.md#repo_add_topic) | **PUT** /repos/{owner}/{repo}/topics/{topic} | Add a topic to a repository
 [**repo_apply_diff_patch**](RepositoryApi.md#repo_apply_diff_patch) | **POST** /repos/{owner}/{repo}/diffpatch | Apply diff patch to repository
 [**repo_cancel_scheduled_auto_merge**](RepositoryApi.md#repo_cancel_scheduled_auto_merge) | **DELETE** /repos/{owner}/{repo}/pulls/{index}/merge | Cancel the scheduled auto merge for the given pull request
+[**repo_change_files**](RepositoryApi.md#repo_change_files) | **POST** /repos/{owner}/{repo}/contents | Modify multiple files in a repository
 [**repo_check_collaborator**](RepositoryApi.md#repo_check_collaborator) | **GET** /repos/{owner}/{repo}/collaborators/{collaborator} | Check if a user is a collaborator of a repository
 [**repo_check_team**](RepositoryApi.md#repo_check_team) | **GET** /repos/{owner}/{repo}/teams/{team} | Check if a team is assigned to a repository
 [**repo_create_branch**](RepositoryApi.md#repo_create_branch) | **POST** /repos/{owner}/{repo}/branches | Create a branch
@@ -35,6 +37,7 @@ Method | HTTP request | Description
 [**repo_create_tag**](RepositoryApi.md#repo_create_tag) | **POST** /repos/{owner}/{repo}/tags | Create a new git tag in a repository
 [**repo_create_wiki_page**](RepositoryApi.md#repo_create_wiki_page) | **POST** /repos/{owner}/{repo}/wiki/new | Create a wiki page
 [**repo_delete**](RepositoryApi.md#repo_delete) | **DELETE** /repos/{owner}/{repo} | Delete a repository
+[**repo_delete_avatar**](RepositoryApi.md#repo_delete_avatar) | **DELETE** /repos/{owner}/{repo}/avatar | Delete avatar
 [**repo_delete_branch**](RepositoryApi.md#repo_delete_branch) | **DELETE** /repos/{owner}/{repo}/branches/{branch} | Delete a specific branch from a repository
 [**repo_delete_branch_protection**](RepositoryApi.md#repo_delete_branch_protection) | **DELETE** /repos/{owner}/{repo}/branch_protections/{name} | Delete a specific branch protection for the repository
 [**repo_delete_collaborator**](RepositoryApi.md#repo_delete_collaborator) | **DELETE** /repos/{owner}/{repo}/collaborators/{collaborator} | Delete a collaborator from a repository
@@ -71,17 +74,22 @@ Method | HTTP request | Description
 [**repo_get_branch_protection**](RepositoryApi.md#repo_get_branch_protection) | **GET** /repos/{owner}/{repo}/branch_protections/{name} | Get a specific branch protection for the repository
 [**repo_get_by_id**](RepositoryApi.md#repo_get_by_id) | **GET** /repositories/{id} | Get a repository by id
 [**repo_get_combined_status_by_ref**](RepositoryApi.md#repo_get_combined_status_by_ref) | **GET** /repos/{owner}/{repo}/commits/{ref}/status | Get a commit's combined status, by branch/tag/commit reference
+[**repo_get_commit_pull_request**](RepositoryApi.md#repo_get_commit_pull_request) | **GET** /repos/{owner}/{repo}/commits/{sha}/pull | Get the pull request of the commit
 [**repo_get_contents**](RepositoryApi.md#repo_get_contents) | **GET** /repos/{owner}/{repo}/contents/{filepath} | Gets the metadata and contents (if a file) of an entry in a repository, or a list of entries if a dir
 [**repo_get_contents_list**](RepositoryApi.md#repo_get_contents_list) | **GET** /repos/{owner}/{repo}/contents | Gets the metadata of all the entries of the root dir
 [**repo_get_editor_config**](RepositoryApi.md#repo_get_editor_config) | **GET** /repos/{owner}/{repo}/editorconfig/{filepath} | Get the EditorConfig definitions of a file in a repository
 [**repo_get_git_hook**](RepositoryApi.md#repo_get_git_hook) | **GET** /repos/{owner}/{repo}/hooks/git/{id} | Get a Git hook
 [**repo_get_hook**](RepositoryApi.md#repo_get_hook) | **GET** /repos/{owner}/{repo}/hooks/{id} | Get a hook
+[**repo_get_issue_config**](RepositoryApi.md#repo_get_issue_config) | **GET** /repos/{owner}/{repo}/issue_config | Returns the issue config for a repo
 [**repo_get_issue_templates**](RepositoryApi.md#repo_get_issue_templates) | **GET** /repos/{owner}/{repo}/issue_templates | Get available issue templates for a repository
 [**repo_get_key**](RepositoryApi.md#repo_get_key) | **GET** /repos/{owner}/{repo}/keys/{id} | Get a repository's key by id
 [**repo_get_languages**](RepositoryApi.md#repo_get_languages) | **GET** /repos/{owner}/{repo}/languages | Get languages and number of bytes of code written
+[**repo_get_latest_release**](RepositoryApi.md#repo_get_latest_release) | **GET** /repos/{owner}/{repo}/releases/latest | Gets the most recent non-prerelease, non-draft release of a repository, sorted by created_at
 [**repo_get_note**](RepositoryApi.md#repo_get_note) | **GET** /repos/{owner}/{repo}/git/notes/{sha} | Get a note corresponding to a single commit from a repository
 [**repo_get_pull_request**](RepositoryApi.md#repo_get_pull_request) | **GET** /repos/{owner}/{repo}/pulls/{index} | Get a pull request
+[**repo_get_pull_request_by_base_head**](RepositoryApi.md#repo_get_pull_request_by_base_head) | **GET** /repos/{owner}/{repo}/pulls/{base}/{head} | Get a pull request by base and head
 [**repo_get_pull_request_commits**](RepositoryApi.md#repo_get_pull_request_commits) | **GET** /repos/{owner}/{repo}/pulls/{index}/commits | Get commits for a pull request
+[**repo_get_pull_request_files**](RepositoryApi.md#repo_get_pull_request_files) | **GET** /repos/{owner}/{repo}/pulls/{index}/files | Get changed files for a pull request
 [**repo_get_pull_review**](RepositoryApi.md#repo_get_pull_review) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews/{id} | Get a specific review for a pull request
 [**repo_get_pull_review_comments**](RepositoryApi.md#repo_get_pull_review_comments) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews/{id}/comments | Get a specific review for a pull request
 [**repo_get_push_mirror_by_remote_name**](RepositoryApi.md#repo_get_push_mirror_by_remote_name) | **GET** /repos/{owner}/{repo}/push_mirrors/{name} | Get push mirror of the repository by remoteName
@@ -92,11 +100,13 @@ Method | HTTP request | Description
 [**repo_get_release_by_tag**](RepositoryApi.md#repo_get_release_by_tag) | **GET** /repos/{owner}/{repo}/releases/tags/{tag} | Get a release by tag name
 [**repo_get_repo_permissions**](RepositoryApi.md#repo_get_repo_permissions) | **GET** /repos/{owner}/{repo}/collaborators/{collaborator}/permission | Get repository permissions for a user
 [**repo_get_reviewers**](RepositoryApi.md#repo_get_reviewers) | **GET** /repos/{owner}/{repo}/reviewers | Return all users that can be requested to review in this repo
+[**repo_get_runner_registration_token**](RepositoryApi.md#repo_get_runner_registration_token) | **GET** /repos/{owner}/{repo}/runners/registration-token | Get a repository's actions runner registration token
 [**repo_get_single_commit**](RepositoryApi.md#repo_get_single_commit) | **GET** /repos/{owner}/{repo}/git/commits/{sha} | Get a single commit from a repository
 [**repo_get_tag**](RepositoryApi.md#repo_get_tag) | **GET** /repos/{owner}/{repo}/tags/{tag} | Get the tag of a repository by tag name
 [**repo_get_wiki_page**](RepositoryApi.md#repo_get_wiki_page) | **GET** /repos/{owner}/{repo}/wiki/page/{pageName} | Get a wiki page
 [**repo_get_wiki_page_revisions**](RepositoryApi.md#repo_get_wiki_page_revisions) | **GET** /repos/{owner}/{repo}/wiki/revisions/{pageName} | Get revisions of a wiki page
 [**repo_get_wiki_pages**](RepositoryApi.md#repo_get_wiki_pages) | **GET** /repos/{owner}/{repo}/wiki/pages | Get all wiki pages
+[**repo_list_activity_feeds**](RepositoryApi.md#repo_list_activity_feeds) | **GET** /repos/{owner}/{repo}/activities/feeds | List a repository's activity feeds
 [**repo_list_all_git_refs**](RepositoryApi.md#repo_list_all_git_refs) | **GET** /repos/{owner}/{repo}/git/refs | Get specified ref or filtered repository's refs
 [**repo_list_branch_protection**](RepositoryApi.md#repo_list_branch_protection) | **GET** /repos/{owner}/{repo}/branch_protections | List branch protections for a repository
 [**repo_list_branches**](RepositoryApi.md#repo_list_branches) | **GET** /repos/{owner}/{repo}/branches | List a repository's branches
@@ -105,6 +115,8 @@ Method | HTTP request | Description
 [**repo_list_git_refs**](RepositoryApi.md#repo_list_git_refs) | **GET** /repos/{owner}/{repo}/git/refs/{ref} | Get specified ref or filtered repository's refs
 [**repo_list_hooks**](RepositoryApi.md#repo_list_hooks) | **GET** /repos/{owner}/{repo}/hooks | List the hooks in a repository
 [**repo_list_keys**](RepositoryApi.md#repo_list_keys) | **GET** /repos/{owner}/{repo}/keys | List a repository's keys
+[**repo_list_pinned_issues**](RepositoryApi.md#repo_list_pinned_issues) | **GET** /repos/{owner}/{repo}/issues/pinned | List a repo's pinned issues
+[**repo_list_pinned_pull_requests**](RepositoryApi.md#repo_list_pinned_pull_requests) | **GET** /repos/{owner}/{repo}/pulls/pinned | List a repo's pinned pull requests
 [**repo_list_pull_requests**](RepositoryApi.md#repo_list_pull_requests) | **GET** /repos/{owner}/{repo}/pulls | List a repo's pull requests
 [**repo_list_pull_reviews**](RepositoryApi.md#repo_list_pull_reviews) | **GET** /repos/{owner}/{repo}/pulls/{index}/reviews | List all reviews for a pull request
 [**repo_list_push_mirrors**](RepositoryApi.md#repo_list_push_mirrors) | **GET** /repos/{owner}/{repo}/push_mirrors | Get all push mirrors of the repository
@@ -120,6 +132,7 @@ Method | HTTP request | Description
 [**repo_merge_pull_request**](RepositoryApi.md#repo_merge_pull_request) | **POST** /repos/{owner}/{repo}/pulls/{index}/merge | Merge a pull request
 [**repo_migrate**](RepositoryApi.md#repo_migrate) | **POST** /repos/migrate | Migrate a remote git repository
 [**repo_mirror_sync**](RepositoryApi.md#repo_mirror_sync) | **POST** /repos/{owner}/{repo}/mirror-sync | Sync a mirrored repository
+[**repo_new_pin_allowed**](RepositoryApi.md#repo_new_pin_allowed) | **GET** /repos/{owner}/{repo}/new_pin_allowed | Returns if new Issue Pins are allowed
 [**repo_pull_request_is_merged**](RepositoryApi.md#repo_pull_request_is_merged) | **GET** /repos/{owner}/{repo}/pulls/{index}/merge | Check if a pull request has been merged
 [**repo_push_mirror_sync**](RepositoryApi.md#repo_push_mirror_sync) | **POST** /repos/{owner}/{repo}/push_mirrors-sync | Sync all push mirrored repository
 [**repo_search**](RepositoryApi.md#repo_search) | **GET** /repos/search | Search for repositories
@@ -129,10 +142,13 @@ Method | HTTP request | Description
 [**repo_tracked_times**](RepositoryApi.md#repo_tracked_times) | **GET** /repos/{owner}/{repo}/times | List a repo's tracked times
 [**repo_transfer**](RepositoryApi.md#repo_transfer) | **POST** /repos/{owner}/{repo}/transfer | Transfer a repo ownership
 [**repo_un_dismiss_pull_review**](RepositoryApi.md#repo_un_dismiss_pull_review) | **POST** /repos/{owner}/{repo}/pulls/{index}/reviews/{id}/undismissals | Cancel to dismiss a review for a pull request
+[**repo_update_avatar**](RepositoryApi.md#repo_update_avatar) | **POST** /repos/{owner}/{repo}/avatar | Update avatar
 [**repo_update_file**](RepositoryApi.md#repo_update_file) | **PUT** /repos/{owner}/{repo}/contents/{filepath} | Update a file in a repository
 [**repo_update_pull_request**](RepositoryApi.md#repo_update_pull_request) | **POST** /repos/{owner}/{repo}/pulls/{index}/update | Merge PR's baseBranch into headBranch
 [**repo_update_topics**](RepositoryApi.md#repo_update_topics) | **PUT** /repos/{owner}/{repo}/topics | Replace list of topics for a repository
+[**repo_validate_issue_config**](RepositoryApi.md#repo_validate_issue_config) | **GET** /repos/{owner}/{repo}/issue_config/validate | Returns the validation information for a issue config
 [**topic_search**](RepositoryApi.md#topic_search) | **GET** /topics/search | search topics via keyword
+[**update_repo_secret**](RepositoryApi.md#update_repo_secret) | **PUT** /repos/{owner}/{repo}/actions/secrets/{secretname} | Create or Update a secret value in a repository
 [**user_current_check_subscription**](RepositoryApi.md#user_current_check_subscription) | **GET** /repos/{owner}/{repo}/subscription | Check if the current user is watching a repo
 [**user_current_delete_subscription**](RepositoryApi.md#user_current_delete_subscription) | **DELETE** /repos/{owner}/{repo}/subscription | Unwatch a repo
 [**user_current_put_subscription**](RepositoryApi.md#user_current_put_subscription) | **PUT** /repos/{owner}/{repo}/subscription | Watch a repo
@@ -142,7 +158,7 @@ Method | HTTP request | Description
 
 ## accept_repo_transfer
 
-> crate::models::Repository accept_repo_transfer(owner, repo)
+> models::Repository accept_repo_transfer(owner, repo)
 Accept a repo transfer
 
 ### Parameters
@@ -155,11 +171,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -171,7 +187,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_current_user_repo
 
-> crate::models::Repository create_current_user_repo(body)
+> models::Repository create_current_user_repo(body)
 Create a repository
 
 ### Parameters
@@ -183,11 +199,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -199,7 +215,7 @@ Name | Type | Description  | Required | Notes
 
 ## create_fork
 
-> crate::models::Repository create_fork(owner, repo, body)
+> models::Repository create_fork(owner, repo, body)
 Fork a repository
 
 ### Parameters
@@ -213,11 +229,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -227,9 +243,39 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## delete_repo_secret
+
+> delete_repo_secret(owner, repo, secretname)
+Delete a secret in a repository
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repository | [required] |
+**repo** | **String** | name of the repository | [required] |
+**secretname** | **String** | name of the secret | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## generate_repo
 
-> crate::models::Repository generate_repo(template_owner, template_repo, body)
+> models::Repository generate_repo(template_owner, template_repo, body)
 Create a repository using a template
 
 ### Parameters
@@ -243,11 +289,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -259,7 +305,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_annotated_tag
 
-> crate::models::AnnotatedTag get_annotated_tag(owner, repo, sha)
+> models::AnnotatedTag get_annotated_tag(owner, repo, sha)
 Gets the tag object of an annotated tag (not lightweight tags)
 
 ### Parameters
@@ -273,11 +319,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::AnnotatedTag**](AnnotatedTag.md)
+[**models::AnnotatedTag**](AnnotatedTag.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -289,7 +335,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_blob
 
-> crate::models::GitBlobResponse get_blob(owner, repo, sha)
+> models::GitBlobResponse get_blob(owner, repo, sha)
 Gets the blob of a repository.
 
 ### Parameters
@@ -303,11 +349,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::GitBlobResponse**](GitBlobResponse.md)
+[**models::GitBlobResponse**](GitBlobResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -319,7 +365,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_tree
 
-> crate::models::GitTreeResponse get_tree(owner, repo, sha, recursive, page, per_page)
+> models::GitTreeResponse get_tree(owner, repo, sha, recursive, page, per_page)
 Gets the tree of a repository.
 
 ### Parameters
@@ -336,11 +382,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::GitTreeResponse**](GitTreeResponse.md)
+[**models::GitTreeResponse**](GitTreeResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -352,7 +398,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_forks
 
-> Vec<crate::models::Repository> list_forks(owner, repo, page, limit)
+> Vec<models::Repository> list_forks(owner, repo, page, limit)
 List a repository's forks
 
 ### Parameters
@@ -367,11 +413,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::Repository>**](Repository.md)
+[**Vec<models::Repository>**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -383,7 +429,7 @@ Name | Type | Description  | Required | Notes
 
 ## reject_repo_transfer
 
-> crate::models::Repository reject_repo_transfer(owner, repo)
+> models::Repository reject_repo_transfer(owner, repo)
 Reject a repo transfer
 
 ### Parameters
@@ -396,11 +442,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -431,7 +477,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -443,7 +489,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_add_push_mirror
 
-> crate::models::PushMirror repo_add_push_mirror(owner, repo, body)
+> models::PushMirror repo_add_push_mirror(owner, repo, body)
 add a push mirror to the repository
 
 ### Parameters
@@ -457,11 +503,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PushMirror**](PushMirror.md)
+[**models::PushMirror**](PushMirror.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -491,7 +537,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -521,7 +567,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -533,7 +579,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_apply_diff_patch
 
-> crate::models::FileResponse repo_apply_diff_patch(owner, repo, body)
+> models::FileResponse repo_apply_diff_patch(owner, repo, body)
 Apply diff patch to repository
 
 ### Parameters
@@ -547,11 +593,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::FileResponse**](FileResponse.md)
+[**models::FileResponse**](FileResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -581,12 +627,42 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_change_files
+
+> models::FilesResponse repo_change_files(owner, repo, body)
+Modify multiple files in a repository
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+**body** | [**ChangeFilesOptions**](ChangeFilesOptions.md) |  | [required] |
+
+### Return type
+
+[**models::FilesResponse**](FilesResponse.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -611,7 +687,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -623,7 +699,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_check_team
 
-> crate::models::Team repo_check_team(owner, repo, team)
+> models::Team repo_check_team(owner, repo, team)
 Check if a team is assigned to a repository
 
 ### Parameters
@@ -637,11 +713,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Team**](Team.md)
+[**models::Team**](Team.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -653,7 +729,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_branch
 
-> crate::models::Branch repo_create_branch(owner, repo, body)
+> models::Branch repo_create_branch(owner, repo, body)
 Create a branch
 
 ### Parameters
@@ -667,11 +743,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Branch**](Branch.md)
+[**models::Branch**](Branch.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -683,7 +759,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_branch_protection
 
-> crate::models::BranchProtection repo_create_branch_protection(owner, repo, body)
+> models::BranchProtection repo_create_branch_protection(owner, repo, body)
 Create a branch protections for a repository
 
 ### Parameters
@@ -697,11 +773,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::BranchProtection**](BranchProtection.md)
+[**models::BranchProtection**](BranchProtection.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -713,7 +789,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_file
 
-> crate::models::FileResponse repo_create_file(owner, repo, filepath, body)
+> models::FileResponse repo_create_file(owner, repo, filepath, body)
 Create a file in a repository
 
 ### Parameters
@@ -728,11 +804,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::FileResponse**](FileResponse.md)
+[**models::FileResponse**](FileResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -744,7 +820,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_hook
 
-> crate::models::Hook repo_create_hook(owner, repo, body)
+> models::Hook repo_create_hook(owner, repo, body)
 Create a hook
 
 ### Parameters
@@ -758,11 +834,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Hook**](Hook.md)
+[**models::Hook**](Hook.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -774,7 +850,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_key
 
-> crate::models::DeployKey repo_create_key(owner, repo, body)
+> models::DeployKey repo_create_key(owner, repo, body)
 Add a key to a repository
 
 ### Parameters
@@ -788,11 +864,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::DeployKey**](DeployKey.md)
+[**models::DeployKey**](DeployKey.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -804,7 +880,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_pull_request
 
-> crate::models::PullRequest repo_create_pull_request(owner, repo, body)
+> models::PullRequest repo_create_pull_request(owner, repo, body)
 Create a pull request
 
 ### Parameters
@@ -818,11 +894,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullRequest**](PullRequest.md)
+[**models::PullRequest**](PullRequest.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -834,7 +910,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_pull_review
 
-> crate::models::PullReview repo_create_pull_review(owner, repo, index, body)
+> models::PullReview repo_create_pull_review(owner, repo, index, body)
 Create a review to an pull request
 
 ### Parameters
@@ -849,11 +925,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullReview**](PullReview.md)
+[**models::PullReview**](PullReview.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -865,7 +941,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_pull_review_requests
 
-> Vec<crate::models::PullReview> repo_create_pull_review_requests(owner, repo, index, body)
+> Vec<models::PullReview> repo_create_pull_review_requests(owner, repo, index, body)
 create review requests for a pull request
 
 ### Parameters
@@ -880,11 +956,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::PullReview>**](PullReview.md)
+[**Vec<models::PullReview>**](PullReview.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -896,7 +972,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_release
 
-> crate::models::Release repo_create_release(owner, repo, body)
+> models::Release repo_create_release(owner, repo, body)
 Create a release
 
 ### Parameters
@@ -910,11 +986,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Release**](Release.md)
+[**models::Release**](Release.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -926,7 +1002,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_release_attachment
 
-> crate::models::Attachment repo_create_release_attachment(owner, repo, id, attachment, name)
+> models::Attachment repo_create_release_attachment(owner, repo, id, attachment, name)
 Create a release attachment
 
 ### Parameters
@@ -942,11 +1018,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Attachment**](Attachment.md)
+[**models::Attachment**](Attachment.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -958,7 +1034,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_status
 
-> crate::models::CommitStatus repo_create_status(owner, repo, sha, body)
+> models::CommitStatus repo_create_status(owner, repo, sha, body)
 Create a commit status
 
 ### Parameters
@@ -973,11 +1049,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::CommitStatus**](CommitStatus.md)
+[**models::CommitStatus**](CommitStatus.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -989,7 +1065,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_tag
 
-> crate::models::Tag repo_create_tag(owner, repo, body)
+> models::Tag repo_create_tag(owner, repo, body)
 Create a new git tag in a repository
 
 ### Parameters
@@ -1003,11 +1079,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Tag**](Tag.md)
+[**models::Tag**](Tag.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1019,7 +1095,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_create_wiki_page
 
-> crate::models::WikiPage repo_create_wiki_page(owner, repo, body)
+> models::WikiPage repo_create_wiki_page(owner, repo, body)
 Create a wiki page
 
 ### Parameters
@@ -1033,11 +1109,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::WikiPage**](WikiPage.md)
+[**models::WikiPage**](WikiPage.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1066,7 +1142,36 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_delete_avatar
+
+> repo_delete_avatar(owner, repo)
+Delete avatar
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1096,7 +1201,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1126,7 +1231,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1156,7 +1261,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1168,7 +1273,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_delete_file
 
-> crate::models::FileDeleteResponse repo_delete_file(owner, repo, filepath, body)
+> models::FileDeleteResponse repo_delete_file(owner, repo, filepath, body)
 Delete a file in a repository
 
 ### Parameters
@@ -1183,11 +1288,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::FileDeleteResponse**](FileDeleteResponse.md)
+[**models::FileDeleteResponse**](FileDeleteResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1217,7 +1322,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1247,7 +1352,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1277,7 +1382,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1308,7 +1413,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1339,7 +1444,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1369,7 +1474,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1399,7 +1504,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1430,7 +1535,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1460,7 +1565,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1490,7 +1595,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1520,7 +1625,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1550,7 +1655,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1580,7 +1685,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1592,7 +1697,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_dismiss_pull_review
 
-> crate::models::PullReview repo_dismiss_pull_review(owner, repo, index, id, body)
+> models::PullReview repo_dismiss_pull_review(owner, repo, index, id, body)
 Dismiss a review for a pull request
 
 ### Parameters
@@ -1608,11 +1713,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullReview**](PullReview.md)
+[**models::PullReview**](PullReview.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1643,7 +1748,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1675,7 +1780,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1687,7 +1792,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit
 
-> crate::models::Repository repo_edit(owner, repo, body)
+> models::Repository repo_edit(owner, repo, body)
 Edit a repository's properties. Only fields that are set will be changed.
 
 ### Parameters
@@ -1701,11 +1806,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1717,7 +1822,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit_branch_protection
 
-> crate::models::BranchProtection repo_edit_branch_protection(owner, repo, name, body)
+> models::BranchProtection repo_edit_branch_protection(owner, repo, name, body)
 Edit a branch protections for a repository. Only fields that are set will be changed
 
 ### Parameters
@@ -1732,11 +1837,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::BranchProtection**](BranchProtection.md)
+[**models::BranchProtection**](BranchProtection.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1748,7 +1853,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit_git_hook
 
-> crate::models::GitHook repo_edit_git_hook(owner, repo, id, body)
+> models::GitHook repo_edit_git_hook(owner, repo, id, body)
 Edit a Git hook in a repository
 
 ### Parameters
@@ -1763,11 +1868,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::GitHook**](GitHook.md)
+[**models::GitHook**](GitHook.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1779,7 +1884,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit_hook
 
-> crate::models::Hook repo_edit_hook(owner, repo, id, body)
+> models::Hook repo_edit_hook(owner, repo, id, body)
 Edit a hook in a repository
 
 ### Parameters
@@ -1794,11 +1899,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Hook**](Hook.md)
+[**models::Hook**](Hook.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1810,7 +1915,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit_pull_request
 
-> crate::models::PullRequest repo_edit_pull_request(owner, repo, index, body)
+> models::PullRequest repo_edit_pull_request(owner, repo, index, body)
 Update a pull request. If using deadline only the date will be taken into account, and time of day ignored.
 
 ### Parameters
@@ -1825,11 +1930,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullRequest**](PullRequest.md)
+[**models::PullRequest**](PullRequest.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1841,7 +1946,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit_release
 
-> crate::models::Release repo_edit_release(owner, repo, id, body)
+> models::Release repo_edit_release(owner, repo, id, body)
 Update a release
 
 ### Parameters
@@ -1856,11 +1961,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Release**](Release.md)
+[**models::Release**](Release.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1872,7 +1977,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit_release_attachment
 
-> crate::models::Attachment repo_edit_release_attachment(owner, repo, id, attachment_id, body)
+> models::Attachment repo_edit_release_attachment(owner, repo, id, attachment_id, body)
 Edit a release attachment
 
 ### Parameters
@@ -1888,11 +1993,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Attachment**](Attachment.md)
+[**models::Attachment**](Attachment.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1904,7 +2009,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_edit_wiki_page
 
-> crate::models::WikiPage repo_edit_wiki_page(owner, repo, page_name, body)
+> models::WikiPage repo_edit_wiki_page(owner, repo, page_name, body)
 Edit a wiki page
 
 ### Parameters
@@ -1919,11 +2024,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::WikiPage**](WikiPage.md)
+[**models::WikiPage**](WikiPage.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1935,7 +2040,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get
 
-> crate::models::Repository repo_get(owner, repo)
+> models::Repository repo_get(owner, repo)
 Get a repository
 
 ### Parameters
@@ -1948,11 +2053,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -1964,7 +2069,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_all_commits
 
-> Vec<crate::models::Commit> repo_get_all_commits(owner, repo, sha, path, page, limit)
+> Vec<models::Commit> repo_get_all_commits(owner, repo, sha, path, stat, verification, files, page, limit, not)
 Get a list of all commits from a repository
 
 ### Parameters
@@ -1976,16 +2081,20 @@ Name | Type | Description  | Required | Notes
 **repo** | **String** | name of the repo | [required] |
 **sha** | Option<**String**> | SHA or branch to start listing commits from (usually 'master') |  |
 **path** | Option<**String**> | filepath of a file/dir |  |
+**stat** | Option<**bool**> | include diff stats for every commit (disable for speedup, default 'true') |  |
+**verification** | Option<**bool**> | include verification for every commit (disable for speedup, default 'true') |  |
+**files** | Option<**bool**> | include a list of affected files for every commit (disable for speedup, default 'true') |  |
 **page** | Option<**i32**> | page number of results to return (1-based) |  |
 **limit** | Option<**i32**> | page size of results (ignored if used with 'path') |  |
+**not** | Option<**String**> | commits that match the given specifier will not be listed. |  |
 
 ### Return type
 
-[**Vec<crate::models::Commit>**](Commit.md)
+[**Vec<models::Commit>**](Commit.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2015,7 +2124,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2027,7 +2136,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_assignees
 
-> Vec<crate::models::User> repo_get_assignees(owner, repo)
+> Vec<models::User> repo_get_assignees(owner, repo)
 Return all users that have write access and can be assigned to issues
 
 ### Parameters
@@ -2040,11 +2149,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::User>**](User.md)
+[**Vec<models::User>**](User.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2056,7 +2165,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_branch
 
-> crate::models::Branch repo_get_branch(owner, repo, branch)
+> models::Branch repo_get_branch(owner, repo, branch)
 Retrieve a specific branch from a repository, including its effective branch protection
 
 ### Parameters
@@ -2070,11 +2179,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Branch**](Branch.md)
+[**models::Branch**](Branch.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2086,7 +2195,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_branch_protection
 
-> crate::models::BranchProtection repo_get_branch_protection(owner, repo, name)
+> models::BranchProtection repo_get_branch_protection(owner, repo, name)
 Get a specific branch protection for the repository
 
 ### Parameters
@@ -2100,11 +2209,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::BranchProtection**](BranchProtection.md)
+[**models::BranchProtection**](BranchProtection.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2116,7 +2225,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_by_id
 
-> crate::models::Repository repo_get_by_id(id)
+> models::Repository repo_get_by_id(id)
 Get a repository by id
 
 ### Parameters
@@ -2128,11 +2237,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2144,7 +2253,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_combined_status_by_ref
 
-> crate::models::CombinedStatus repo_get_combined_status_by_ref(owner, repo, _ref, page, limit)
+> models::CombinedStatus repo_get_combined_status_by_ref(owner, repo, r#ref, page, limit)
 Get a commit's combined status, by branch/tag/commit reference
 
 ### Parameters
@@ -2154,17 +2263,47 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
-**_ref** | **String** | name of branch/tag/commit | [required] |
+**r#ref** | **String** | name of branch/tag/commit | [required] |
 **page** | Option<**i32**> | page number of results to return (1-based) |  |
 **limit** | Option<**i32**> | page size of results |  |
 
 ### Return type
 
-[**crate::models::CombinedStatus**](CombinedStatus.md)
+[**models::CombinedStatus**](CombinedStatus.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_get_commit_pull_request
+
+> models::PullRequest repo_get_commit_pull_request(owner, repo, sha)
+Get the pull request of the commit
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+**sha** | **String** | SHA of the commit to get | [required] |
+
+### Return type
+
+[**models::PullRequest**](PullRequest.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2176,7 +2315,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_contents
 
-> crate::models::ContentsResponse repo_get_contents(owner, repo, filepath, _ref)
+> models::ContentsResponse repo_get_contents(owner, repo, filepath, r#ref)
 Gets the metadata and contents (if a file) of an entry in a repository, or a list of entries if a dir
 
 ### Parameters
@@ -2187,15 +2326,15 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
 **filepath** | **String** | path of the dir, file, symlink or submodule in the repo | [required] |
-**_ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
+**r#ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
 
 ### Return type
 
-[**crate::models::ContentsResponse**](ContentsResponse.md)
+[**models::ContentsResponse**](ContentsResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2207,7 +2346,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_contents_list
 
-> Vec<crate::models::ContentsResponse> repo_get_contents_list(owner, repo, _ref)
+> Vec<models::ContentsResponse> repo_get_contents_list(owner, repo, r#ref)
 Gets the metadata of all the entries of the root dir
 
 ### Parameters
@@ -2217,15 +2356,15 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
-**_ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
+**r#ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
 
 ### Return type
 
-[**Vec<crate::models::ContentsResponse>**](ContentsResponse.md)
+[**Vec<models::ContentsResponse>**](ContentsResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2237,7 +2376,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_editor_config
 
-> repo_get_editor_config(owner, repo, filepath, _ref)
+> repo_get_editor_config(owner, repo, filepath, r#ref)
 Get the EditorConfig definitions of a file in a repository
 
 ### Parameters
@@ -2248,7 +2387,7 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
 **filepath** | **String** | filepath of file to get | [required] |
-**_ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
+**r#ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
 
 ### Return type
 
@@ -2256,7 +2395,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2268,7 +2407,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_git_hook
 
-> crate::models::GitHook repo_get_git_hook(owner, repo, id)
+> models::GitHook repo_get_git_hook(owner, repo, id)
 Get a Git hook
 
 ### Parameters
@@ -2282,11 +2421,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::GitHook**](GitHook.md)
+[**models::GitHook**](GitHook.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2298,7 +2437,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_hook
 
-> crate::models::Hook repo_get_hook(owner, repo, id)
+> models::Hook repo_get_hook(owner, repo, id)
 Get a hook
 
 ### Parameters
@@ -2312,11 +2451,40 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Hook**](Hook.md)
+[**models::Hook**](Hook.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_get_issue_config
+
+> models::IssueConfig repo_get_issue_config(owner, repo)
+Returns the issue config for a repo
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+[**models::IssueConfig**](IssueConfig.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2328,7 +2496,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_issue_templates
 
-> Vec<crate::models::IssueTemplate> repo_get_issue_templates(owner, repo)
+> Vec<models::IssueTemplate> repo_get_issue_templates(owner, repo)
 Get available issue templates for a repository
 
 ### Parameters
@@ -2341,11 +2509,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::IssueTemplate>**](IssueTemplate.md)
+[**Vec<models::IssueTemplate>**](IssueTemplate.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2357,7 +2525,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_key
 
-> crate::models::DeployKey repo_get_key(owner, repo, id)
+> models::DeployKey repo_get_key(owner, repo, id)
 Get a repository's key by id
 
 ### Parameters
@@ -2371,11 +2539,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::DeployKey**](DeployKey.md)
+[**models::DeployKey**](DeployKey.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2387,7 +2555,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_languages
 
-> ::std::collections::HashMap<String, i64> repo_get_languages(owner, repo)
+> std::collections::HashMap<String, i64> repo_get_languages(owner, repo)
 Get languages and number of bytes of code written
 
 ### Parameters
@@ -2400,11 +2568,40 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-**::std::collections::HashMap<String, i64>**
+**std::collections::HashMap<String, i64>**
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_get_latest_release
+
+> models::Release repo_get_latest_release(owner, repo)
+Gets the most recent non-prerelease, non-draft release of a repository, sorted by created_at
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+[**models::Release**](Release.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2416,7 +2613,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_note
 
-> crate::models::Note repo_get_note(owner, repo, sha)
+> models::Note repo_get_note(owner, repo, sha, verification, files)
 Get a note corresponding to a single commit from a repository
 
 ### Parameters
@@ -2427,14 +2624,16 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
 **sha** | **String** | a git ref or commit sha | [required] |
+**verification** | Option<**bool**> | include verification for every commit (disable for speedup, default 'true') |  |
+**files** | Option<**bool**> | include a list of affected files for every commit (disable for speedup, default 'true') |  |
 
 ### Return type
 
-[**crate::models::Note**](Note.md)
+[**models::Note**](Note.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2446,7 +2645,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_pull_request
 
-> crate::models::PullRequest repo_get_pull_request(owner, repo, index)
+> models::PullRequest repo_get_pull_request(owner, repo, index)
 Get a pull request
 
 ### Parameters
@@ -2460,11 +2659,42 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullRequest**](PullRequest.md)
+[**models::PullRequest**](PullRequest.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_get_pull_request_by_base_head
+
+> models::PullRequest repo_get_pull_request_by_base_head(owner, repo, base, head)
+Get a pull request by base and head
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+**base** | **String** | base of the pull request to get | [required] |
+**head** | **String** | head of the pull request to get | [required] |
+
+### Return type
+
+[**models::PullRequest**](PullRequest.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2476,7 +2706,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_pull_request_commits
 
-> Vec<crate::models::Commit> repo_get_pull_request_commits(owner, repo, index, page, limit)
+> Vec<models::Commit> repo_get_pull_request_commits(owner, repo, index, page, limit, verification, files)
 Get commits for a pull request
 
 ### Parameters
@@ -2489,14 +2719,50 @@ Name | Type | Description  | Required | Notes
 **index** | **i64** | index of the pull request to get | [required] |
 **page** | Option<**i32**> | page number of results to return (1-based) |  |
 **limit** | Option<**i32**> | page size of results |  |
+**verification** | Option<**bool**> | include verification for every commit (disable for speedup, default 'true') |  |
+**files** | Option<**bool**> | include a list of affected files for every commit (disable for speedup, default 'true') |  |
 
 ### Return type
 
-[**Vec<crate::models::Commit>**](Commit.md)
+[**Vec<models::Commit>**](Commit.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_get_pull_request_files
+
+> Vec<models::ChangedFile> repo_get_pull_request_files(owner, repo, index, skip_to, whitespace, page, limit)
+Get changed files for a pull request
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+**index** | **i64** | index of the pull request to get | [required] |
+**skip_to** | Option<**String**> | skip to given file |  |
+**whitespace** | Option<**String**> | whitespace behavior |  |
+**page** | Option<**i32**> | page number of results to return (1-based) |  |
+**limit** | Option<**i32**> | page size of results |  |
+
+### Return type
+
+[**Vec<models::ChangedFile>**](ChangedFile.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2508,7 +2774,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_pull_review
 
-> crate::models::PullReview repo_get_pull_review(owner, repo, index, id)
+> models::PullReview repo_get_pull_review(owner, repo, index, id)
 Get a specific review for a pull request
 
 ### Parameters
@@ -2523,11 +2789,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullReview**](PullReview.md)
+[**models::PullReview**](PullReview.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2539,7 +2805,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_pull_review_comments
 
-> Vec<crate::models::PullReviewComment> repo_get_pull_review_comments(owner, repo, index, id)
+> Vec<models::PullReviewComment> repo_get_pull_review_comments(owner, repo, index, id)
 Get a specific review for a pull request
 
 ### Parameters
@@ -2554,11 +2820,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::PullReviewComment>**](PullReviewComment.md)
+[**Vec<models::PullReviewComment>**](PullReviewComment.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2570,7 +2836,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_push_mirror_by_remote_name
 
-> crate::models::PushMirror repo_get_push_mirror_by_remote_name(owner, repo, name)
+> models::PushMirror repo_get_push_mirror_by_remote_name(owner, repo, name)
 Get push mirror of the repository by remoteName
 
 ### Parameters
@@ -2584,11 +2850,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PushMirror**](PushMirror.md)
+[**models::PushMirror**](PushMirror.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2600,7 +2866,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_raw_file
 
-> repo_get_raw_file(owner, repo, filepath, _ref)
+> repo_get_raw_file(owner, repo, filepath, r#ref)
 Get a file from a repository
 
 ### Parameters
@@ -2611,7 +2877,7 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
 **filepath** | **String** | filepath of the file to get | [required] |
-**_ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
+**r#ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
 
 ### Return type
 
@@ -2619,7 +2885,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2631,7 +2897,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_raw_file_or_lfs
 
-> repo_get_raw_file_or_lfs(owner, repo, filepath, _ref)
+> repo_get_raw_file_or_lfs(owner, repo, filepath, r#ref)
 Get a file or it's LFS object from a repository
 
 ### Parameters
@@ -2642,7 +2908,7 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
 **filepath** | **String** | filepath of the file to get | [required] |
-**_ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
+**r#ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
 
 ### Return type
 
@@ -2650,7 +2916,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2662,7 +2928,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_release
 
-> crate::models::Release repo_get_release(owner, repo, id)
+> models::Release repo_get_release(owner, repo, id)
 Get a release
 
 ### Parameters
@@ -2676,11 +2942,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Release**](Release.md)
+[**models::Release**](Release.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2692,7 +2958,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_release_attachment
 
-> crate::models::Attachment repo_get_release_attachment(owner, repo, id, attachment_id)
+> models::Attachment repo_get_release_attachment(owner, repo, id, attachment_id)
 Get a release attachment
 
 ### Parameters
@@ -2707,11 +2973,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Attachment**](Attachment.md)
+[**models::Attachment**](Attachment.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2723,7 +2989,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_release_by_tag
 
-> crate::models::Release repo_get_release_by_tag(owner, repo, tag)
+> models::Release repo_get_release_by_tag(owner, repo, tag)
 Get a release by tag name
 
 ### Parameters
@@ -2737,11 +3003,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Release**](Release.md)
+[**models::Release**](Release.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2753,7 +3019,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_repo_permissions
 
-> crate::models::RepoCollaboratorPermission repo_get_repo_permissions(owner, repo, collaborator)
+> models::RepoCollaboratorPermission repo_get_repo_permissions(owner, repo, collaborator)
 Get repository permissions for a user
 
 ### Parameters
@@ -2767,11 +3033,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::RepoCollaboratorPermission**](RepoCollaboratorPermission.md)
+[**models::RepoCollaboratorPermission**](RepoCollaboratorPermission.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2783,7 +3049,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_reviewers
 
-> Vec<crate::models::User> repo_get_reviewers(owner, repo)
+> Vec<models::User> repo_get_reviewers(owner, repo)
 Return all users that can be requested to review in this repo
 
 ### Parameters
@@ -2796,11 +3062,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::User>**](User.md)
+[**Vec<models::User>**](User.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2810,9 +3076,38 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## repo_get_runner_registration_token
+
+> repo_get_runner_registration_token(owner, repo)
+Get a repository's actions runner registration token
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## repo_get_single_commit
 
-> crate::models::Commit repo_get_single_commit(owner, repo, sha)
+> models::Commit repo_get_single_commit(owner, repo, sha, stat, verification, files)
 Get a single commit from a repository
 
 ### Parameters
@@ -2823,14 +3118,17 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
 **sha** | **String** | a git ref or commit sha | [required] |
+**stat** | Option<**bool**> | include diff stats for every commit (disable for speedup, default 'true') |  |
+**verification** | Option<**bool**> | include verification for every commit (disable for speedup, default 'true') |  |
+**files** | Option<**bool**> | include a list of affected files for every commit (disable for speedup, default 'true') |  |
 
 ### Return type
 
-[**crate::models::Commit**](Commit.md)
+[**models::Commit**](Commit.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2842,7 +3140,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_tag
 
-> crate::models::Tag repo_get_tag(owner, repo, tag)
+> models::Tag repo_get_tag(owner, repo, tag)
 Get the tag of a repository by tag name
 
 ### Parameters
@@ -2856,11 +3154,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Tag**](Tag.md)
+[**models::Tag**](Tag.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2872,7 +3170,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_wiki_page
 
-> crate::models::WikiPage repo_get_wiki_page(owner, repo, page_name)
+> models::WikiPage repo_get_wiki_page(owner, repo, page_name)
 Get a wiki page
 
 ### Parameters
@@ -2886,11 +3184,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::WikiPage**](WikiPage.md)
+[**models::WikiPage**](WikiPage.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2902,7 +3200,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_wiki_page_revisions
 
-> crate::models::WikiCommitList repo_get_wiki_page_revisions(owner, repo, page_name, page)
+> models::WikiCommitList repo_get_wiki_page_revisions(owner, repo, page_name, page)
 Get revisions of a wiki page
 
 ### Parameters
@@ -2917,11 +3215,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::WikiCommitList**](WikiCommitList.md)
+[**models::WikiCommitList**](WikiCommitList.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2933,7 +3231,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_get_wiki_pages
 
-> Vec<crate::models::WikiPageMetaData> repo_get_wiki_pages(owner, repo, page, limit)
+> Vec<models::WikiPageMetaData> repo_get_wiki_pages(owner, repo, page, limit)
 Get all wiki pages
 
 ### Parameters
@@ -2948,11 +3246,43 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::WikiPageMetaData>**](WikiPageMetaData.md)
+[**Vec<models::WikiPageMetaData>**](WikiPageMetaData.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_list_activity_feeds
+
+> Vec<models::Activity> repo_list_activity_feeds(owner, repo, date, page, limit)
+List a repository's activity feeds
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+**date** | Option<**String**> | the date of the activities to be found |  |
+**page** | Option<**i32**> | page number of results to return (1-based) |  |
+**limit** | Option<**i32**> | page size of results |  |
+
+### Return type
+
+[**Vec<models::Activity>**](Activity.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2964,7 +3294,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_all_git_refs
 
-> Vec<crate::models::Reference> repo_list_all_git_refs(owner, repo)
+> Vec<models::Reference> repo_list_all_git_refs(owner, repo)
 Get specified ref or filtered repository's refs
 
 ### Parameters
@@ -2977,11 +3307,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::Reference>**](Reference.md)
+[**Vec<models::Reference>**](Reference.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -2993,7 +3323,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_branch_protection
 
-> Vec<crate::models::BranchProtection> repo_list_branch_protection(owner, repo)
+> Vec<models::BranchProtection> repo_list_branch_protection(owner, repo)
 List branch protections for a repository
 
 ### Parameters
@@ -3006,11 +3336,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::BranchProtection>**](BranchProtection.md)
+[**Vec<models::BranchProtection>**](BranchProtection.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3022,7 +3352,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_branches
 
-> Vec<crate::models::Branch> repo_list_branches(owner, repo, page, limit)
+> Vec<models::Branch> repo_list_branches(owner, repo, page, limit)
 List a repository's branches
 
 ### Parameters
@@ -3037,11 +3367,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::Branch>**](Branch.md)
+[**Vec<models::Branch>**](Branch.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3053,7 +3383,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_collaborators
 
-> Vec<crate::models::User> repo_list_collaborators(owner, repo, page, limit)
+> Vec<models::User> repo_list_collaborators(owner, repo, page, limit)
 List a repository's collaborators
 
 ### Parameters
@@ -3068,11 +3398,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::User>**](User.md)
+[**Vec<models::User>**](User.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3084,7 +3414,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_git_hooks
 
-> Vec<crate::models::GitHook> repo_list_git_hooks(owner, repo)
+> Vec<models::GitHook> repo_list_git_hooks(owner, repo)
 List the Git hooks in a repository
 
 ### Parameters
@@ -3097,11 +3427,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::GitHook>**](GitHook.md)
+[**Vec<models::GitHook>**](GitHook.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3113,7 +3443,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_git_refs
 
-> Vec<crate::models::Reference> repo_list_git_refs(owner, repo, _ref)
+> Vec<models::Reference> repo_list_git_refs(owner, repo, r#ref)
 Get specified ref or filtered repository's refs
 
 ### Parameters
@@ -3123,15 +3453,15 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
-**_ref** | **String** | part or full name of the ref | [required] |
+**r#ref** | **String** | part or full name of the ref | [required] |
 
 ### Return type
 
-[**Vec<crate::models::Reference>**](Reference.md)
+[**Vec<models::Reference>**](Reference.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3143,7 +3473,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_hooks
 
-> Vec<crate::models::Hook> repo_list_hooks(owner, repo, page, limit)
+> Vec<models::Hook> repo_list_hooks(owner, repo, page, limit)
 List the hooks in a repository
 
 ### Parameters
@@ -3158,11 +3488,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::Hook>**](Hook.md)
+[**Vec<models::Hook>**](Hook.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3174,7 +3504,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_keys
 
-> Vec<crate::models::DeployKey> repo_list_keys(owner, repo, key_id, fingerprint, page, limit)
+> Vec<models::DeployKey> repo_list_keys(owner, repo, key_id, fingerprint, page, limit)
 List a repository's keys
 
 ### Parameters
@@ -3191,11 +3521,69 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::DeployKey>**](DeployKey.md)
+[**Vec<models::DeployKey>**](DeployKey.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_list_pinned_issues
+
+> Vec<models::Issue> repo_list_pinned_issues(owner, repo)
+List a repo's pinned issues
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+[**Vec<models::Issue>**](Issue.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_list_pinned_pull_requests
+
+> Vec<models::PullRequest> repo_list_pinned_pull_requests(owner, repo)
+List a repo's pinned pull requests
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+[**Vec<models::PullRequest>**](PullRequest.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3207,7 +3595,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_pull_requests
 
-> Vec<crate::models::PullRequest> repo_list_pull_requests(owner, repo, state, sort, milestone, labels, page, limit)
+> Vec<models::PullRequest> repo_list_pull_requests(owner, repo, state, sort, milestone, labels, page, limit)
 List a repo's pull requests
 
 ### Parameters
@@ -3226,11 +3614,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::PullRequest>**](PullRequest.md)
+[**Vec<models::PullRequest>**](PullRequest.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3242,7 +3630,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_pull_reviews
 
-> Vec<crate::models::PullReview> repo_list_pull_reviews(owner, repo, index, page, limit)
+> Vec<models::PullReview> repo_list_pull_reviews(owner, repo, index, page, limit)
 List all reviews for a pull request
 
 ### Parameters
@@ -3258,11 +3646,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::PullReview>**](PullReview.md)
+[**Vec<models::PullReview>**](PullReview.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3274,7 +3662,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_push_mirrors
 
-> Vec<crate::models::PushMirror> repo_list_push_mirrors(owner, repo, page, limit)
+> Vec<models::PushMirror> repo_list_push_mirrors(owner, repo, page, limit)
 Get all push mirrors of the repository
 
 ### Parameters
@@ -3289,11 +3677,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::PushMirror>**](PushMirror.md)
+[**Vec<models::PushMirror>**](PushMirror.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3305,7 +3693,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_release_attachments
 
-> Vec<crate::models::Attachment> repo_list_release_attachments(owner, repo, id)
+> Vec<models::Attachment> repo_list_release_attachments(owner, repo, id)
 List release's attachments
 
 ### Parameters
@@ -3319,11 +3707,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::Attachment>**](Attachment.md)
+[**Vec<models::Attachment>**](Attachment.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3335,7 +3723,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_releases
 
-> Vec<crate::models::Release> repo_list_releases(owner, repo, draft, pre_release, per_page, page, limit)
+> Vec<models::Release> repo_list_releases(owner, repo, draft, pre_release, page, limit)
 List a repo's releases
 
 ### Parameters
@@ -3347,17 +3735,16 @@ Name | Type | Description  | Required | Notes
 **repo** | **String** | name of the repo | [required] |
 **draft** | Option<**bool**> | filter (exclude / include) drafts, if you dont have repo write access none will show |  |
 **pre_release** | Option<**bool**> | filter (exclude / include) pre-releases |  |
-**per_page** | Option<**i32**> | page size of results, deprecated - use limit |  |
 **page** | Option<**i32**> | page number of results to return (1-based) |  |
 **limit** | Option<**i32**> | page size of results |  |
 
 ### Return type
 
-[**Vec<crate::models::Release>**](Release.md)
+[**Vec<models::Release>**](Release.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3369,7 +3756,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_stargazers
 
-> Vec<crate::models::User> repo_list_stargazers(owner, repo, page, limit)
+> Vec<models::User> repo_list_stargazers(owner, repo, page, limit)
 List a repo's stargazers
 
 ### Parameters
@@ -3384,11 +3771,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::User>**](User.md)
+[**Vec<models::User>**](User.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3400,7 +3787,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_statuses
 
-> Vec<crate::models::CommitStatus> repo_list_statuses(owner, repo, sha, sort, state, page, limit)
+> Vec<models::CommitStatus> repo_list_statuses(owner, repo, sha, sort, state, page, limit)
 Get a commit's statuses
 
 ### Parameters
@@ -3418,11 +3805,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::CommitStatus>**](CommitStatus.md)
+[**Vec<models::CommitStatus>**](CommitStatus.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3434,7 +3821,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_statuses_by_ref
 
-> Vec<crate::models::CommitStatus> repo_list_statuses_by_ref(owner, repo, _ref, sort, state, page, limit)
+> Vec<models::CommitStatus> repo_list_statuses_by_ref(owner, repo, r#ref, sort, state, page, limit)
 Get a commit's statuses, by branch/tag/commit reference
 
 ### Parameters
@@ -3444,7 +3831,7 @@ Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
-**_ref** | **String** | name of branch/tag/commit | [required] |
+**r#ref** | **String** | name of branch/tag/commit | [required] |
 **sort** | Option<**String**> | type of sort |  |
 **state** | Option<**String**> | type of state |  |
 **page** | Option<**i32**> | page number of results to return (1-based) |  |
@@ -3452,11 +3839,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::CommitStatus>**](CommitStatus.md)
+[**Vec<models::CommitStatus>**](CommitStatus.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3468,7 +3855,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_subscribers
 
-> Vec<crate::models::User> repo_list_subscribers(owner, repo, page, limit)
+> Vec<models::User> repo_list_subscribers(owner, repo, page, limit)
 List a repo's watchers
 
 ### Parameters
@@ -3483,11 +3870,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::User>**](User.md)
+[**Vec<models::User>**](User.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3499,7 +3886,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_tags
 
-> Vec<crate::models::Tag> repo_list_tags(owner, repo, page, limit)
+> Vec<models::Tag> repo_list_tags(owner, repo, page, limit)
 List a repository's tags
 
 ### Parameters
@@ -3514,11 +3901,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::Tag>**](Tag.md)
+[**Vec<models::Tag>**](Tag.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3530,7 +3917,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_teams
 
-> Vec<crate::models::Team> repo_list_teams(owner, repo)
+> Vec<models::Team> repo_list_teams(owner, repo)
 List a repository's teams
 
 ### Parameters
@@ -3543,11 +3930,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::Team>**](Team.md)
+[**Vec<models::Team>**](Team.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3559,7 +3946,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_list_topics
 
-> crate::models::TopicName repo_list_topics(owner, repo, page, limit)
+> models::TopicName repo_list_topics(owner, repo, page, limit)
 Get list of topics that a repository has
 
 ### Parameters
@@ -3574,11 +3961,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::TopicName**](TopicName.md)
+[**models::TopicName**](TopicName.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3609,7 +3996,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3621,7 +4008,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_migrate
 
-> crate::models::Repository repo_migrate(body)
+> models::Repository repo_migrate(body)
 Migrate a remote git repository
 
 ### Parameters
@@ -3633,11 +4020,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3666,12 +4053,41 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+## repo_new_pin_allowed
+
+> models::NewIssuePinsAllowed repo_new_pin_allowed(owner, repo)
+Returns if new Issue Pins are allowed
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+[**models::NewIssuePinsAllowed**](NewIssuePinsAllowed.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -3696,7 +4112,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3725,7 +4141,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3737,7 +4153,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_search
 
-> crate::models::SearchResults repo_search(q, topic, include_desc, uid, priority_owner_id, team_id, starred_by, private, is_private, template, archived, mode, exclusive, sort, order, page, limit)
+> models::SearchResults repo_search(q, topic, include_desc, uid, priority_owner_id, team_id, starred_by, private, is_private, template, archived, mode, exclusive, sort, order, page, limit)
 Search for repositories
 
 ### Parameters
@@ -3765,11 +4181,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::SearchResults**](SearchResults.md)
+[**models::SearchResults**](SearchResults.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3798,7 +4214,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3810,7 +4226,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_submit_pull_review
 
-> crate::models::PullReview repo_submit_pull_review(owner, repo, index, id, body)
+> models::PullReview repo_submit_pull_review(owner, repo, index, id, body)
 Submit a pending review to an pull request
 
 ### Parameters
@@ -3826,11 +4242,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullReview**](PullReview.md)
+[**models::PullReview**](PullReview.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3842,7 +4258,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_test_hook
 
-> repo_test_hook(owner, repo, id, _ref)
+> repo_test_hook(owner, repo, id, r#ref)
 Test a push webhook
 
 ### Parameters
@@ -3853,7 +4269,7 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the repo | [required] |
 **repo** | **String** | name of the repo | [required] |
 **id** | **i64** | id of the hook to test | [required] |
-**_ref** | Option<**String**> | The name of the commit/branch/tag. Default the repository’s default branch (usually master) |  |
+**r#ref** | Option<**String**> | The name of the commit/branch/tag, indicates which commit will be loaded to the webhook payload. |  |
 
 ### Return type
 
@@ -3861,7 +4277,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3873,7 +4289,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_tracked_times
 
-> Vec<crate::models::TrackedTime> repo_tracked_times(owner, repo, user, since, before, page, limit)
+> Vec<models::TrackedTime> repo_tracked_times(owner, repo, user, since, before, page, limit)
 List a repo's tracked times
 
 ### Parameters
@@ -3891,11 +4307,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::TrackedTime>**](TrackedTime.md)
+[**Vec<models::TrackedTime>**](TrackedTime.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3907,7 +4323,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_transfer
 
-> crate::models::Repository repo_transfer(owner, repo, body)
+> models::Repository repo_transfer(owner, repo, body)
 Transfer a repo ownership
 
 ### Parameters
@@ -3921,11 +4337,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::Repository**](Repository.md)
+[**models::Repository**](Repository.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3937,7 +4353,7 @@ Name | Type | Description  | Required | Notes
 
 ## repo_un_dismiss_pull_review
 
-> crate::models::PullReview repo_un_dismiss_pull_review(owner, repo, index, id)
+> models::PullReview repo_un_dismiss_pull_review(owner, repo, index, id)
 Cancel to dismiss a review for a pull request
 
 ### Parameters
@@ -3952,11 +4368,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::PullReview**](PullReview.md)
+[**models::PullReview**](PullReview.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -3966,9 +4382,39 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## repo_update_avatar
+
+> repo_update_avatar(owner, repo, body)
+Update avatar
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+**body** | Option<[**UpdateRepoAvatarOption**](UpdateRepoAvatarOption.md)> |  |  |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, text/plain
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## repo_update_file
 
-> crate::models::FileResponse repo_update_file(owner, repo, filepath, body)
+> models::FileResponse repo_update_file(owner, repo, filepath, body)
 Update a file in a repository
 
 ### Parameters
@@ -3983,11 +4429,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::FileResponse**](FileResponse.md)
+[**models::FileResponse**](FileResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -4018,7 +4464,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -4048,7 +4494,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -4058,9 +4504,38 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## repo_validate_issue_config
+
+> models::IssueConfigValidation repo_validate_issue_config(owner, repo)
+Returns the validation information for a issue config
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repo | [required] |
+**repo** | **String** | name of the repo | [required] |
+
+### Return type
+
+[**models::IssueConfigValidation**](IssueConfigValidation.md)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## topic_search
 
-> Vec<crate::models::TopicResponse> topic_search(q, page, limit)
+> Vec<models::TopicResponse> topic_search(q, page, limit)
 search topics via keyword
 
 ### Parameters
@@ -4074,11 +4549,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::TopicResponse>**](TopicResponse.md)
+[**Vec<models::TopicResponse>**](TopicResponse.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -4088,9 +4563,40 @@ Name | Type | Description  | Required | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
+## update_repo_secret
+
+> update_repo_secret(owner, repo, secretname, body)
+Create or Update a secret value in a repository
+
+### Parameters
+
+
+Name | Type | Description  | Required | Notes
+------------- | ------------- | ------------- | ------------- | -------------
+**owner** | **String** | owner of the repository | [required] |
+**repo** | **String** | name of the repository | [required] |
+**secretname** | **String** | name of the secret | [required] |
+**body** | Option<[**CreateOrUpdateSecretOption**](CreateOrUpdateSecretOption.md)> |  |  |
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
 ## user_current_check_subscription
 
-> crate::models::WatchInfo user_current_check_subscription(owner, repo)
+> models::WatchInfo user_current_check_subscription(owner, repo)
 Check if the current user is watching a repo
 
 ### Parameters
@@ -4103,11 +4609,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::WatchInfo**](WatchInfo.md)
+[**models::WatchInfo**](WatchInfo.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -4136,7 +4642,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -4148,7 +4654,7 @@ Name | Type | Description  | Required | Notes
 
 ## user_current_put_subscription
 
-> crate::models::WatchInfo user_current_put_subscription(owner, repo)
+> models::WatchInfo user_current_put_subscription(owner, repo)
 Watch a repo
 
 ### Parameters
@@ -4161,11 +4667,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**crate::models::WatchInfo**](WatchInfo.md)
+[**models::WatchInfo**](WatchInfo.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -4177,7 +4683,7 @@ Name | Type | Description  | Required | Notes
 
 ## user_tracked_times
 
-> Vec<crate::models::TrackedTime> user_tracked_times(owner, repo, user)
+> Vec<models::TrackedTime> user_tracked_times(owner, repo, user)
 List a user's tracked times in a repo
 
 ### Parameters
@@ -4191,11 +4697,11 @@ Name | Type | Description  | Required | Notes
 
 ### Return type
 
-[**Vec<crate::models::TrackedTime>**](TrackedTime.md)
+[**Vec<models::TrackedTime>**](TrackedTime.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **page** | Option<**i64**> |  | [optional]
 **sha** | Option<**String**> |  | [optional]
 **total_count** | Option<**i64**> |  | [optional]
-**tree** | Option<[**Vec<crate::models::GitEntry>**](GitEntry.md)> |  | [optional]
+**tree** | Option<[**Vec<models::GitEntry>**](GitEntry.md)> |  | [optional]
 **truncated** | Option<**bool**> |  | [optional]
 **url** | Option<**String**> |  | [optional]
 

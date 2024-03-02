@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **label** | Option<**String**> |  | [optional]
-**_ref** | Option<**String**> |  | [optional]
-**repo** | Option<[**crate::models::Repository**](Repository.md)> |  | [optional]
+**r#ref** | Option<**String**> |  | [optional]
+**repo** | Option<[**models::Repository**](Repository.md)> |  | [optional]
 **repo_id** | Option<**i64**> |  | [optional]
 **sha** | Option<**String**> |  | [optional]
 

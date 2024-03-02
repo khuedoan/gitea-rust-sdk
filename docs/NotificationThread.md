@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | Option<**i64**> |  | [optional]
 **pinned** | Option<**bool**> |  | [optional]
-**repository** | Option<[**crate::models::Repository**](Repository.md)> |  | [optional]
-**subject** | Option<[**crate::models::NotificationSubject**](NotificationSubject.md)> |  | [optional]
+**repository** | Option<[**models::Repository**](Repository.md)> |  | [optional]
+**subject** | Option<[**models::NotificationSubject**](NotificationSubject.md)> |  | [optional]
 **unread** | Option<**bool**> |  | [optional]
 **updated_at** | Option<**String**> |  | [optional]
 **url** | Option<**String**> |  | [optional]

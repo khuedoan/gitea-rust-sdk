@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **name** | **String** | Name of the repository to create | 
 **owner** | **String** | The organization or person who will own the new repository | 
 **private** | Option<**bool**> | Whether the repository is private | [optional]
+**protected_branch** | Option<**bool**> | include protected branches in template repo | [optional]
 **topics** | Option<**bool**> | include topics in template repo | [optional]
 **webhooks** | Option<**bool**> | include webhooks in template repo | [optional]
 

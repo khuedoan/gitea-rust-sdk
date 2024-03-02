@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**commit** | Option<[**crate::models::CommitMeta**](CommitMeta.md)> |  | [optional]
+**commit** | Option<[**models::CommitMeta**](CommitMeta.md)> |  | [optional]
 **id** | Option<**String**> |  | [optional]
 **message** | Option<**String**> |  | [optional]
 **name** | Option<**String**> |  | [optional]

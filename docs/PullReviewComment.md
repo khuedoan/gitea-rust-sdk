@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **position** | Option<**i32**> |  | [optional]
 **pull_request_review_id** | Option<**i64**> |  | [optional]
 **pull_request_url** | Option<**String**> |  | [optional]
-**resolver** | Option<[**crate::models::User**](User.md)> |  | [optional]
+**resolver** | Option<[**models::User**](User.md)> |  | [optional]
 **updated_at** | Option<**String**> |  | [optional]
-**user** | Option<[**crate::models::User**](User.md)> |  | [optional]
+**user** | Option<[**models::User**](User.md)> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

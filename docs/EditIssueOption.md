@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **body** | Option<**String**> |  | [optional]
 **due_date** | Option<**String**> |  | [optional]
 **milestone** | Option<**i64**> |  | [optional]
-**_ref** | Option<**String**> |  | [optional]
+**r#ref** | Option<**String**> |  | [optional]
 **state** | Option<**String**> |  | [optional]
 **title** | Option<**String**> |  | [optional]
 **unset_due_date** | Option<**bool**> |  | [optional]

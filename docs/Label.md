@@ -6,7 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **color** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
+**exclusive** | Option<**bool**> |  | [optional]
 **id** | Option<**i64**> |  | [optional]
+**is_archived** | Option<**bool**> |  | [optional]
 **name** | Option<**String**> |  | [optional]
 **url** | Option<**String**> |  | [optional]
 

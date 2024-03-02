@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | 
 **permission** | Option<**String**> |  | [optional]
 **units** | Option<**Vec<String>**> |  | [optional]
-**units_map** | Option<**::std::collections::HashMap<String, String>**> |  | [optional]
+**units_map** | Option<**std::collections::HashMap<String, String>**> |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

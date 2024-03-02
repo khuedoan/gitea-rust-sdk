@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## delete_package
 
-> delete_package(owner, _type, name, version)
+> delete_package(owner, r#type, name, version)
 Delete a package
 
 ### Parameters
@@ -22,7 +22,7 @@ Delete a package
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **owner** | **String** | owner of the package | [required] |
-**_type** | **String** | type of the package | [required] |
+**r#type** | **String** | type of the package | [required] |
 **name** | **String** | name of the package | [required] |
 **version** | **String** | version of the package | [required] |
 
@@ -32,7 +32,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -44,7 +44,7 @@ Name | Type | Description  | Required | Notes
 
 ## get_package
 
-> crate::models::Package get_package(owner, _type, name, version)
+> models::Package get_package(owner, r#type, name, version)
 Gets a package
 
 ### Parameters
@@ -53,17 +53,17 @@ Gets a package
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **owner** | **String** | owner of the package | [required] |
-**_type** | **String** | type of the package | [required] |
+**r#type** | **String** | type of the package | [required] |
 **name** | **String** | name of the package | [required] |
 **version** | **String** | version of the package | [required] |
 
 ### Return type
 
-[**crate::models::Package**](Package.md)
+[**models::Package**](Package.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_package_files
 
-> Vec<crate::models::PackageFile> list_package_files(owner, _type, name, version)
+> Vec<models::PackageFile> list_package_files(owner, r#type, name, version)
 Gets all files of a package
 
 ### Parameters
@@ -84,17 +84,17 @@ Gets all files of a package
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
 **owner** | **String** | owner of the package | [required] |
-**_type** | **String** | type of the package | [required] |
+**r#type** | **String** | type of the package | [required] |
 **name** | **String** | name of the package | [required] |
 **version** | **String** | version of the package | [required] |
 
 ### Return type
 
-[**Vec<crate::models::PackageFile>**](PackageFile.md)
+[**Vec<models::PackageFile>**](PackageFile.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Required | Notes
 
 ## list_packages
 
-> Vec<crate::models::Package> list_packages(owner, page, limit, _type, q)
+> Vec<models::Package> list_packages(owner, page, limit, r#type, q)
 Gets all packages of an owner
 
 ### Parameters
@@ -117,16 +117,16 @@ Name | Type | Description  | Required | Notes
 **owner** | **String** | owner of the packages | [required] |
 **page** | Option<**i32**> | page number of results to return (1-based) |  |
 **limit** | Option<**i32**> | page size of results |  |
-**_type** | Option<**String**> | package type filter |  |
+**r#type** | Option<**String**> | package type filter |  |
 **q** | Option<**String**> | name filter |  |
 
 ### Return type
 
-[**Vec<crate::models::Package>**](Package.md)
+[**Vec<models::Package>**](Package.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **body** | Option<**String**> |  | [optional]
-**comments** | Option<[**Vec<crate::models::CreatePullReviewComment>**](CreatePullReviewComment.md)> |  | [optional]
+**comments** | Option<[**Vec<models::CreatePullReviewComment>**](CreatePullReviewComment.md)> |  | [optional]
 **commit_id** | Option<**String**> |  | [optional]
 **event** | Option<**String**> | ReviewStateType review state type | [optional]
 

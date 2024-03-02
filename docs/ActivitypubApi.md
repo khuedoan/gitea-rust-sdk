@@ -4,14 +4,14 @@ All URIs are relative to */api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**activitypub_person**](ActivitypubApi.md#activitypub_person) | **GET** /activitypub/user/{username} | Returns the Person actor for a user
-[**activitypub_person_inbox**](ActivitypubApi.md#activitypub_person_inbox) | **POST** /activitypub/user/{username}/inbox | Send to the inbox
+[**activitypub_person**](ActivitypubApi.md#activitypub_person) | **GET** /activitypub/user-id/{user-id} | Returns the Person actor for a user
+[**activitypub_person_inbox**](ActivitypubApi.md#activitypub_person_inbox) | **POST** /activitypub/user-id/{user-id}/inbox | Send to the inbox
 
 
 
 ## activitypub_person
 
-> crate::models::ActivityPub activitypub_person(username)
+> models::ActivityPub activitypub_person(user_id)
 Returns the Person actor for a user
 
 ### Parameters
@@ -19,15 +19,15 @@ Returns the Person actor for a user
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**username** | **String** | username of the user | [required] |
+**user_id** | **i32** | user ID of the user | [required] |
 
 ### Return type
 
-[**crate::models::ActivityPub**](ActivityPub.md)
+[**models::ActivityPub**](ActivityPub.md)
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 
@@ -39,7 +39,7 @@ Name | Type | Description  | Required | Notes
 
 ## activitypub_person_inbox
 
-> activitypub_person_inbox(username)
+> activitypub_person_inbox(user_id)
 Send to the inbox
 
 ### Parameters
@@ -47,7 +47,7 @@ Send to the inbox
 
 Name | Type | Description  | Required | Notes
 ------------- | ------------- | ------------- | ------------- | -------------
-**username** | **String** | username of the user | [required] |
+**user_id** | **i32** | user ID of the user | [required] |
 
 ### Return type
 
@@ -55,7 +55,7 @@ Name | Type | Description  | Required | Notes
 
 ### Authorization
 
-[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+[TOTPHeader](../README.md#TOTPHeader), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [SudoHeader](../README.md#SudoHeader), [BasicAuth](../README.md#BasicAuth), [AccessToken](../README.md#AccessToken), [SudoParam](../README.md#SudoParam), [Token](../README.md#Token)
 
 ### HTTP request headers
 

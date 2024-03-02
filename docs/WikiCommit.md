@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**author** | Option<[**crate::models::CommitUser**](CommitUser.md)> |  | [optional]
-**commiter** | Option<[**crate::models::CommitUser**](CommitUser.md)> |  | [optional]
+**author** | Option<[**models::CommitUser**](CommitUser.md)> |  | [optional]
+**commiter** | Option<[**models::CommitUser**](CommitUser.md)> |  | [optional]
 **message** | Option<**String**> |  | [optional]
 **sha** | Option<**String**> |  | [optional]
 

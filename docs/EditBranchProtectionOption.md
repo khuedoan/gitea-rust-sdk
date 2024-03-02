@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **enable_push** | Option<**bool**> |  | [optional]
 **enable_push_whitelist** | Option<**bool**> |  | [optional]
 **enable_status_check** | Option<**bool**> |  | [optional]
+**ignore_stale_approvals** | Option<**bool**> |  | [optional]
 **merge_whitelist_teams** | Option<**Vec<String>**> |  | [optional]
 **merge_whitelist_usernames** | Option<**Vec<String>**> |  | [optional]
 **protected_file_patterns** | Option<**String**> |  | [optional]

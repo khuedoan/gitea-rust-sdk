@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **content_base64** | Option<**String**> | Page content, base64 encoded | [optional]
 **footer** | Option<**String**> |  | [optional]
 **html_url** | Option<**String**> |  | [optional]
-**last_commit** | Option<[**crate::models::WikiCommit**](WikiCommit.md)> |  | [optional]
+**last_commit** | Option<[**models::WikiCommit**](WikiCommit.md)> |  | [optional]
 **sidebar** | Option<**String**> |  | [optional]
 **sub_url** | Option<**String**> |  | [optional]
 **title** | Option<**String**> |  | [optional]

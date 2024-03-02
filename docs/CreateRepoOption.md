@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **issue_labels** | Option<**String**> | Label-Set to use | [optional]
 **license** | Option<**String**> | License to use | [optional]
 **name** | **String** | Name of the repository to create | 
+**object_format_name** | Option<**String**> | ObjectFormatName of the underlying git repository | [optional]
 **private** | Option<**bool**> | Whether the repository is private | [optional]
 **readme** | Option<**String**> | Readme of the repository to create | [optional]
 **template** | Option<**bool**> | Whether the repository is template | [optional]

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **client_id** | Option<**String**> |  | [optional]
 **client_secret** | Option<**String**> |  | [optional]
+**confidential_client** | Option<**bool**> |  | [optional]
 **created** | Option<**String**> |  | [optional]
 **id** | Option<**i64**> |  | [optional]
 **name** | Option<**String**> |  | [optional]

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_do** | **String** |  | 
+**r#do** | **String** |  | 
 **merge_commit_id** | Option<**String**> |  | [optional]
 **merge_message_field** | Option<**String**> |  | [optional]
 **merge_title_field** | Option<**String**> |  | [optional]

@@ -6,11 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **avatar_url** | Option<**String**> |  | [optional]
 **description** | Option<**String**> |  | [optional]
+**email** | Option<**String**> |  | [optional]
 **full_name** | Option<**String**> |  | [optional]
 **id** | Option<**i64**> |  | [optional]
 **location** | Option<**String**> |  | [optional]
+**name** | Option<**String**> |  | [optional]
 **repo_admin_change_team_access** | Option<**bool**> |  | [optional]
-**username** | Option<**String**> |  | [optional]
+**username** | Option<**String**> | deprecated | [optional]
 **visibility** | Option<**String**> |  | [optional]
 **website** | Option<**String**> |  | [optional]
 

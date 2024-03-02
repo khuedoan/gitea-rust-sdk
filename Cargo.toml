@@ -1,7 +1,9 @@
 [package]
 name = "gitea"
-version = "1.18.0+de-283-gefaa9958b"
+version = "1.22.0+de-892-g9de5e39e2"
 authors = ["OpenAPI Generator team and contributors"]
+description = "This documentation describes the Gitea API."
+license = "MIT"
 edition = "2018"
 
 [dependencies]
@@ -9,9 +11,7 @@ serde = "^1.0"
 serde_derive = "^1.0"
 serde_json = "^1.0"
 url = "^2.2"
-uuid = { version = "^1.0", features = ["serde"] }
+uuid = { version = "^1.0", features = ["serde", "v4"] }
 [dependencies.reqwest]
 version = "^0.11"
 features = ["json", "multipart"]
-
-[dev-dependencies]

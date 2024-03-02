@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **description** | Option<**String**> |  | [optional]
+**email** | Option<**String**> |  | [optional]
 **full_name** | Option<**String**> |  | [optional]
 **location** | Option<**String**> |  | [optional]
 **repo_admin_change_team_access** | Option<**bool**> |  | [optional]
